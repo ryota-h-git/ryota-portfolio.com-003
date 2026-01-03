@@ -1,0 +1,99 @@
+@use "../global" as global;
+
+.c-section {
+  padding: 48px 0;
+}
+
+.c-section__head {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  gap: 10px;
+
+  &--center {
+    text-align: center;
+  }
+}
+
+.c-section__head-main {
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid global.$border-color;
+  width: fit-content;
+  color: global.$heading-color;
+}
+
+.c-section__head-main-bottom {
+  border-bottom: none;
+  margin: 0 auto;
+}
+
+.c-section__head-sub {
+  font-size: 15px;
+  color: global.$heading-sub-color;
+}
+
+
+
+.c-section__detail {
+  position: relative;
+  display: block;
+  width: fit-content;
+  margin-top: 120px;
+  margin-left: auto;
+  font-size: 14px;
+  color: #444;
+  padding-bottom: 10px;
+
+  &::before {
+    position: absolute;
+    content: "";
+    width: 105px;
+    height: 1px;
+    background-color: #c95e00;
+    bottom: 0;
+    right: -6px;
+    transition: 0.5s;
+  }
+
+  &::after {
+    position: absolute;
+    content: "";
+    width: 1px;
+    height: 10px;
+    background-color: #c95e00;
+    bottom: 0.5px;
+    right: -6px;
+    transform: rotate(-45deg);
+    transform-origin: bottom center;
+    transition: 0.5s;
+  }
+
+  &:hover {
+    &::before,
+    &::after {
+      right: -16px;
+    }
+    &::before {
+      width: 115px;
+    }
+  }
+}
+
+.archive-detail.c-section__detail {
+  &::before {
+    width: 50px;
+  }
+  &:hover {
+    &:before {
+      width: 60px;
+    }
+  }
+}
+
+.c-section__lead-text {
+
+  @include global.mq(pc) {
+    margin-top: 100px;
+  }
+}

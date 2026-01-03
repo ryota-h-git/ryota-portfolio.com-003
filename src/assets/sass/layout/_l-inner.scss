@@ -1,0 +1,18 @@
+@use "../global" as global;
+
+.l-inner {
+  padding-inline: 20px;
+
+  @include global.mq(pc) {
+    padding-inline: 80px;
+    padding-inline: 200px;
+  }
+
+  @include global.mq(xl) {
+    padding-inline: 340px;
+  }
+
+  @include global.mq(tb) {
+    padding-inline: 100px;
+  }
+}

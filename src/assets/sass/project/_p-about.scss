@@ -1,0 +1,38 @@
+@use "../global" as global;
+.p-about__img {
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+
+    @include global.mq(pc) {
+      border-radius: 50%;
+      transform: scale(1.3);
+    }
+  }
+}
+
+.p-about__text-container {
+  @include global.mq(pc) {
+    padding-inline: 20%;
+    margin-top: 50px;
+  }
+}
+
+.p-about__text {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.p-about__text-link {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #8d9090;
+
+  &:hover {
+    opacity: 0.5;
+  }
+}

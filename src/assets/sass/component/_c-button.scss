@@ -1,0 +1,13 @@
+@use "../global" as global;
+
+.c-button__text {
+  color: #f5feff;
+}
+.c-button__backward-button {
+  margin-left: auto;
+  margin-top: 50px;
+  display: block;
+  width: fit-content;
+  border-bottom: 1px solid;
+  color: #8d9090;
+}

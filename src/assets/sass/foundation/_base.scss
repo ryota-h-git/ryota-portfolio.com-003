@@ -1,0 +1,13 @@
+@use "../global" as global;
+body {
+  font-family: global.$main-font;
+
+  &.is-checked {
+    overflow: hidden;
+  }
+}
+
+p {
+  color: global.$text-color;
+}
+

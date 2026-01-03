@@ -1,0 +1,41 @@
+@use "../global" as global;
+.p-privacy__inner {
+  padding: 20px;
+
+  @include global.mq(pc) {
+    padding: 80px;
+  }
+}
+
+.p-privacy__wrapper {
+  padding: 10px;
+  background-color: #f1fbff;
+  margin: 0 auto;
+  
+  @include global.mq(pc) {
+    width: 70%;
+    padding: 50px;
+  }
+}
+
+.privacy__title {
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: 600;
+  
+  @include global.mq(pc) {
+    margin-bottom: 80px;
+    font-size: 35px;
+  }
+}
+
+.privacy__h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  @include global.mq(pc) {
+    font-size: 25px;
+  }
+}

@@ -1,0 +1,9 @@
+@use "../global" as global;
+
+.p-archive__inner {
+    padding: 90px 20px;
+
+    @include global.mq(pc) {
+        padding: 90px 180px;
+    }
+}

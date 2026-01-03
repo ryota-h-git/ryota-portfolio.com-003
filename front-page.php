@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 <div class="l-inner">
     <header class="l-header">
-       
+
     </header>
 
 
@@ -9,9 +9,8 @@
         <div class="p-fv__heading-wrap">
             <h1 class="p-fv__heading animation__text2 is-target">
                 <span>Ryota's</span></br>
-                <span>portfolio</span>
+                <span class="p-fv__heading-accent">portfolio</span>
             </h1>
-            <p class="p-fv__subtitle">想いを伝えるWebサイト、丁寧にお作りします</p>
         </div>
         <div class="p-fv__accent">
             <svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1239 823.64" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
@@ -125,7 +124,6 @@
             </svg>
         </div>
         <div class="p-fv__dots"></div>
-        <div class="p-fv__pc"></div>
 
     </div>
     <!-- ------works------ -->

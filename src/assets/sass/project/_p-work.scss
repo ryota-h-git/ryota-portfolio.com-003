@@ -1,0 +1,21 @@
+@use "../global" as global;
+
+.skill {
+  margin-top: 50px;
+  align-items: center;
+}
+
+.fa-brands {
+  font-size: 120px;
+}
+
+.p-work__swiper-slide {
+  width: 200px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p-work__swiper-wrapper {
+  transition-timing-function: linear;
+}

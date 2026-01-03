@@ -1,0 +1,83 @@
+@use "../global" as global;
+
+.p-single-work__detail {
+  font-size: 30px;
+  margin: 100px 0;
+}
+
+.p-single-work__inner {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  padding-inline: 20px;
+
+  @include global.mq(pc) {
+    padding-inline: 50px;
+  }
+}
+
+.p-single-work__wrapper {
+  margin-top: 40px;
+
+}
+
+.p-single-work__wrap {
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.p-single-work__overview {
+  margin-top: 40px;
+}
+
+.p-single-work__img {
+  margin: 20px auto;
+  width: 80%;
+  border-radius: 20px;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+  }
+}
+
+.p-single-work__tag {
+  color: #dc552c;
+  padding: 5px 10px;
+  border: 1px solid #dc552c;
+  width: fit-content;
+  border-radius: 10px;
+}
+
+.p-single-work__x {
+    margin-top: 100px;
+    svg {
+        width: 50px;
+    }
+}
+
+.p-single-work__text {
+  font-size: 14px;
+  margin-top: 20px;
+  font-weight: 300;
+
+  a {
+    display: block;
+  }
+
+  @include global.mq(pc) {
+    font-size: 16px;
+  }
+}
+
+.wp-block-embed {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.wp-block-embed__wrapper {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+}
+

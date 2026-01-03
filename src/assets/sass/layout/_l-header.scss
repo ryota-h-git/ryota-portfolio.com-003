@@ -1,0 +1,23 @@
+@use "../global" as global;
+
+.l-header {
+  width: 100vw;
+  margin: 0 calc(50% - 50vw);
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-inline: 20px;
+  height: 60px;
+  z-index: 100;
+
+  @include global.mq(pc) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-inline: 60px;
+    height: 80px;
+  z-index: 100;
+
+  }
+}

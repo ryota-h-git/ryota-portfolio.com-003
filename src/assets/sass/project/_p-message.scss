@@ -1,0 +1,28 @@
+@use "../global" as global;
+.p-message__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include global.mq(pc) {
+    display: flex;
+  }
+}
+
+.p-message__text-cotntents {
+  @include global.mq(pc) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-inline: 20%;
+  }
+}
+
+
+
+.p-message-contact {
+  text-align: center;
+  margin-top: 40px;
+}
+

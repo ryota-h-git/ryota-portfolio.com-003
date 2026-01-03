@@ -1,0 +1,20 @@
+@use "../global" as global;
+
+.p-header-drawer {
+  &.is-checked {
+    translate: 0 0;
+    z-index: 40;
+  }
+}
+
+.p-header-drawer__nav-list {
+      display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  gap: 10px;
+}
