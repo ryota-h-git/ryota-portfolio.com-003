@@ -10,13 +10,9 @@
             </h1>
         </div>
         <div class="p-fv__whale">
-            <!-- main line -->
             <?php get_template_part('template-parts/whale-main-svg'); ?>
-            <!-- glow line -->
-            <?php get_template_part('template-parts/whale-glow-svg'); ?>
         </div>
         <div class="p-fv__dots"></div>
-
     </div>
     <!-- ------works------ -->
     <section class="c-section p-works" id="works">

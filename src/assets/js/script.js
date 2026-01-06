@@ -61,30 +61,23 @@ new SplitType(slideUpText1);
 
 
 const WorkSwiper = new Swiper(".p-work__swiper", {
-  //swiperの名前
-  //切り替えのモーション
-  speed: 10000, //表示切り替えのスピード
-  effect: "slide", //切り替えのmotion (※1)
-  allowTouchMove: true, // スワイプで表示の切り替えを有効に
-
-  //最後→最初に戻るループ再生を有効に
+  speed: 10000, 
+  effect: "slide",
+  allowTouchMove: true,
   loop: true,
-  //自動スライドについて
   autoplay: {
-    delay: 0, //何秒ごとにスライドを動かすか
-    stopOnLastSlide: false, //最後のスライドで自動再生を終了させるか
-    disableOnInteraction: false, //ユーザーの操作時に止める
-    reverseDirection: false, //自動再生を逆向きにする
+    delay: 0,
+    stopOnLastSlide: false, 
+    disableOnInteraction: false, 
+    reverseDirection: false, 
   },
 
-  //表示について
-  centeredSlides: true, //中央寄せにする
+  centeredSlides: true, 
   slidesPerView: "auto",
   spaceBetween: 0,
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-  // フォント読み込みを監視
   document.fonts.ready.then(() => {
     const target = document.querySelector(".is-target");
     if (target) {
@@ -97,9 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
 gsap.registerPlugin(MotionPathPlugin);
 
 window.addEventListener("load", () => {
-  const whalePaths = document.querySelectorAll(
-    ".p-fv__whale svg path, .p-fv__whale svg line, .p-fv__whale svg polyline, .p-fv__whale svg polygon"
-  );
+  const whalePaths = document.querySelectorAll(".p-fv__whale svg .line--main");
   const dotsContainer = document.querySelector(".p-fv__dots");
   const svg = document.querySelector(".p-fv__whale svg");
 
@@ -143,32 +134,91 @@ window.addEventListener("load", () => {
   }
 
   const dotsRect = dotsContainer.getBoundingClientRect();
-
-  // ✅ SVG座標変換マトリクス取得（これが超重要）
   const matrix = svg.getScreenCTM();
 
+  // 接続点を格納するSet（重複を防ぐ）
+  const connectionPoints = new Set();
   const positions = [];
 
+  // 接続点を取得する関数
+  const getConnectionPoint = (point) => {
+    // 小数点以下を丸めて、近い点を同じ点として扱う（重複除去）
+    const roundedX = Math.round(point.x * 10) / 10;
+    const roundedY = Math.round(point.y * 10) / 10;
+    return `${roundedX},${roundedY}`;
+  };
+
+  // SVG座標を画面座標に変換する関数
+  const svgToScreen = (svgPoint) => {
+    const point = svg.createSVGPoint();
+    point.x = svgPoint.x;
+    point.y = svgPoint.y;
+    const screenPoint = point.matrixTransform(matrix);
+    return {
+      x: screenPoint.x - dotsRect.left,
+      y: screenPoint.y - dotsRect.top
+    };
+  };
+
+  // 1. まず全ての接続点（始点・終点）を収集
   whalePaths.forEach((path) => {
     try {
       const len = path.getTotalLength();
-      const step = Math.max(70, len / 80); // 線ごとに適度な数のドット
-      for (let i = 0; i <= len; i += step) {
-        const point = path.getPointAtLength(i);
+      if (len === 0) return;
 
-        // SVG座標 → 画面座標変換
-        const svgPoint = svg.createSVGPoint();
-        svgPoint.x = point.x;
-        svgPoint.y = point.y;
-        const screenPoint = svgPoint.matrixTransform(matrix);
+      // 始点
+      const startPoint = path.getPointAtLength(0);
+      const startKey = getConnectionPoint(startPoint);
+      if (!connectionPoints.has(startKey)) {
+        connectionPoints.add(startKey);
+        positions.push({
+          x: svgToScreen(startPoint).x,
+          y: svgToScreen(startPoint).y,
+          isConnection: true // 接続点フラグ
+        });
+      }
 
-        const x = screenPoint.x - dotsRect.left;
-        const y = screenPoint.y - dotsRect.top;
-
-        positions.push({ x, y });
+      // 終点
+      const endPoint = path.getPointAtLength(len);
+      const endKey = getConnectionPoint(endPoint);
+      if (!connectionPoints.has(endKey)) {
+        connectionPoints.add(endKey);
+        positions.push({
+          x: svgToScreen(endPoint).x,
+          y: svgToScreen(endPoint).y,
+          isConnection: true
+        });
       }
     } catch (e) {
-      // polylineやpolygonも通る
+      // エラー処理
+    }
+  });
+
+  // 2. 線の途中にも均等にドットを配置（接続点以外）
+  whalePaths.forEach((path) => {
+    try {
+      const len = path.getTotalLength();
+      if (len === 0) return;
+
+      const step = Math.max(50, len / 60); // ドットの間隔を調整
+      
+      // 始点と終点を除いて、途中の点を取得
+      for (let i = step; i < len - step; i += step) {
+        const point = path.getPointAtLength(i);
+        const pointKey = getConnectionPoint(point);
+        
+        // 接続点でない場合のみ追加
+        if (!connectionPoints.has(pointKey)) {
+          const screenPoint = svgToScreen(point);
+          positions.push({
+            x: screenPoint.x,
+            y: screenPoint.y,
+            isConnection: false
+          });
+        }
+      }
+    } catch (e) {
+      // エラー処理
     }
   });
 
@@ -207,7 +257,20 @@ window.addEventListener("load", () => {
     });
   }
 
-  // 🐋 線を描くアニメーション
+  const MIN_DIST = 6;
+const isNear = (a, b) => {
+  const dx = a.x - b.x;
+  const dy = a.y - b.y;
+  return dx * dx + dy * dy < MIN_DIST * MIN_DIST;
+};
+
+const pushUnique = (p) => {
+  if (positions.some((q) => isNear(p, q))) return;
+  positions.push(p);
+};
+
+
+  // 線を描くアニメーション
   whalePaths.forEach((path, index) => {
     const len = path.getTotalLength();
     gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
