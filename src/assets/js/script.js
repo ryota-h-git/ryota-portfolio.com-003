@@ -105,6 +105,43 @@ window.addEventListener("load", () => {
 
   if (!whalePaths.length || !svg || !dotsContainer) return;
 
+  // グラデーション定義を追加（光るエフェクト用）
+  const defs = svg.querySelector("defs") || document.createElementNS("http://www.w3.org/2000/svg", "defs");
+  if (!svg.querySelector("defs")) {
+    svg.insertBefore(defs, svg.firstChild);
+  }
+
+  // グラデーションIDが存在しない場合のみ作成
+  if (!defs.querySelector("#lineGradient")) {
+    const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+    gradient.setAttribute("id", "lineGradient");
+    gradient.setAttribute("x1", "0%");
+    gradient.setAttribute("y1", "0%");
+    gradient.setAttribute("x2", "100%");
+    gradient.setAttribute("y2", "0%");
+    
+    // グラデーションストップを追加
+    const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    stop1.setAttribute("offset", "0%");
+    stop1.setAttribute("stop-color", "#98a4ea");
+    stop1.setAttribute("stop-opacity", "0.3");
+    
+    const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    stop2.setAttribute("offset", "50%");
+    stop2.setAttribute("stop-color", "#ffffff");
+    stop2.setAttribute("stop-opacity", "1");
+    
+    const stop3 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    stop3.setAttribute("offset", "100%");
+    stop3.setAttribute("stop-color", "#98a4ea");
+    stop3.setAttribute("stop-opacity", "0.3");
+    
+    gradient.appendChild(stop1);
+    gradient.appendChild(stop2);
+    gradient.appendChild(stop3);
+    defs.appendChild(gradient);
+  }
+
   const dotsRect = dotsContainer.getBoundingClientRect();
 
   // ✅ SVG座標変換マトリクス取得（これが超重要）
@@ -195,7 +232,6 @@ for (let i = 0; i < 30; i++) {
     x: Math.random() * window.innerWidth,
     y: window.innerHeight + Math.random() * 100,
     scale: Math.random() * 0.4 + 0.3,
-   
   });
 
   gsap.to(bubble, {
