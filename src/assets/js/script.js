@@ -90,11 +90,17 @@ document.addEventListener("DOMContentLoaded", () => {
 gsap.registerPlugin(MotionPathPlugin);
 
 window.addEventListener("load", () => {
-  const whalePaths = document.querySelectorAll(".p-fv__whale svg .line--main");
   const dotsContainer = document.querySelector(".p-fv__dots");
   const svg = document.querySelector(".p-fv__whale svg");
 
-  if (!whalePaths.length || !svg || !dotsContainer) return;
+  if (!svg || !dotsContainer) return;
+
+  // 新SVG向け: class="line"（または各種線要素）を拾う
+  const whalePaths = Array.from(
+    svg.querySelectorAll(".line, path, line, polyline, polygon")
+  ).filter((el) => typeof el.getTotalLength === "function");
+
+  if (!whalePaths.length) return;
 
   // グラデーション定義を追加（光るエフェクト用）
   const defs = svg.querySelector("defs") || document.createElementNS("http://www.w3.org/2000/svg", "defs");
@@ -140,6 +146,18 @@ window.addEventListener("load", () => {
   const connectionPoints = new Set();
   const positions = [];
 
+  // 画面上で近い点は同一とみなしてドットを重複させない
+  const MIN_DIST = 6; // px（ドット直径4pxなら6px前後が無難）
+  const isNear = (a, b) => {
+    const dx = a.x - b.x;
+    const dy = a.y - b.y;
+    return dx * dx + dy * dy < MIN_DIST * MIN_DIST;
+  };
+  const pushUnique = (p) => {
+    if (positions.some((q) => isNear(p, q))) return;
+    positions.push(p);
+  };
+
   // 接続点を取得する関数
   const getConnectionPoint = (point) => {
     // 小数点以下を丸めて、近い点を同じ点として扱う（重複除去）
@@ -171,9 +189,10 @@ window.addEventListener("load", () => {
       const startKey = getConnectionPoint(startPoint);
       if (!connectionPoints.has(startKey)) {
         connectionPoints.add(startKey);
-        positions.push({
-          x: svgToScreen(startPoint).x,
-          y: svgToScreen(startPoint).y,
+        const sp = svgToScreen(startPoint);
+        pushUnique({
+          x: sp.x,
+          y: sp.y,
           isConnection: true // 接続点フラグ
         });
       }
@@ -183,9 +202,10 @@ window.addEventListener("load", () => {
       const endKey = getConnectionPoint(endPoint);
       if (!connectionPoints.has(endKey)) {
         connectionPoints.add(endKey);
-        positions.push({
-          x: svgToScreen(endPoint).x,
-          y: svgToScreen(endPoint).y,
+        const ep = svgToScreen(endPoint);
+        pushUnique({
+          x: ep.x,
+          y: ep.y,
           isConnection: true
         });
       }
@@ -210,7 +230,7 @@ window.addEventListener("load", () => {
         // 接続点でない場合のみ追加
         if (!connectionPoints.has(pointKey)) {
           const screenPoint = svgToScreen(point);
-          positions.push({
+          pushUnique({
             x: screenPoint.x,
             y: screenPoint.y,
             isConnection: false
@@ -256,19 +276,6 @@ window.addEventListener("load", () => {
       opacity: 1,
     });
   }
-
-  const MIN_DIST = 6;
-const isNear = (a, b) => {
-  const dx = a.x - b.x;
-  const dy = a.y - b.y;
-  return dx * dx + dy * dy < MIN_DIST * MIN_DIST;
-};
-
-const pushUnique = (p) => {
-  if (positions.some((q) => isNear(p, q))) return;
-  positions.push(p);
-};
-
 
   // 線を描くアニメーション
   whalePaths.forEach((path, index) => {
