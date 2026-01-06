@@ -1,0 +1,73 @@
+<svg id="_レイヤー_1" data-name="レイヤー 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1004.6 619.04" preserveAspectRatio="xMidYMid meet" width="100%" height="100%">
+    <polygon class="line line--grow" stroke="currentColor" points="1004.6 0 950.9 0 876.9 5.67 814.59 9.56 740.6 14.75 688.67 20.6 577.03 71.22 547.82 84.21 454.35 90.7 393.34 95.89 332.98 101.73 282.35 105.62 397.88 153.01 292.08 252.32 226.53 310.08 149.29 397.71 65.56 498.32 0 585.94 22.07 619.04 65.56 619.04 178.5 601.52 299.87 563.87 427.09 497.02 489.4 529.47 574.43 530.12 763.96 484.69 806.15 464.56 721.77 445.74 675.04 430.81 564.7 428.86 490.7 434.06 578.33 367.2 617.92 276.98 672.44 134.83 695.81 90.7 758.12 47.86 865.87 73.17 1004.6 0" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="950.9 0 864.59 74.69 875.79 7.14" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="863.1 65.18 815.91 11.6 761.22 46.86" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="757.89 44.64 686.82 21.32 696.81 89.33 643.24 117.93 684.32 22.71" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="576.88 71.29 643.24 114.04 550.79 85.45" fill="none" />
+    <polygon class="line line--grow" stroke="currentColor" points="646.01 117.93 671.27 131.53 629.36 192.05 646.01 117.93" fill="none" />
+    <polygon class="line line--grow" stroke="currentColor" points="548.3 85.45 627.41 187.88 482.78 136.66 548.3 85.45" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="629.36 192.05 616.03 276.72 476.57 257.56" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="623.51 192.05 482.78 254.93 486.05 141.16" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="392.13 97.72 398.52 152.04 457.3 92.66 482.78 130.95" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="401.95" y1="152.04" x2="478.44" y2="138.57" fill="none" />
+    <polyline class="line line--grow" stroke="currentColor" points="481.53 139.97 415.45 204.37 399.98 156" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="388.95" y1="300.29" x2="411.26" y2="207.12" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="419.13" y1="207.12" x2="476.57" y2="253.71" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="386.32" y1="300.29" x2="477.79" y2="260.42" fill="none" />
+    <path class="line line--grow" stroke="currentColor" d="M388.1,303.06s63.63,60.09,64.07,59.8,27.1-102.44,27.1-102.44" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="532.65" y1="330.83" x2="482.78" y2="260.42" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="536.04" y1="330.83" x2="612.61" y2="278.77" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="534.62" y1="334.35" x2="576.88" y2="364.7" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="529.9" y1="334.35" x2="455.47" y2="362.85" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="490.83" y1="430.44" x2="529.9" y2="338.73" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="452.18" y1="366.7" x2="487.13" y2="430.44" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="765.12" y1="482.66" x2="720.3" y2="445.24" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="629.36" y1="472.8" x2="715.36" y2="445.24" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="760.6" y1="482.66" x2="629.36" y2="476.5" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="675.33" y1="430.44" x2="633.46" y2="471.48" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="577.01" y1="529.38" x2="627.1" y2="478.14" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="535.97" y1="480.69" x2="625.01" y2="474.43" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="565.19" y1="427.36" x2="625.01" y2="471.48" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="573.61" y1="527.34" x2="537.07" y2="483.32" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="562.59" y1="429.34" x2="537.07" y2="477.56" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="532.96" y1="478.14" x2="492.63" y2="434.42" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="428.82" y1="493.15" x2="529.9" y2="481.76" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="491.76" y1="531.02" x2="532.96" y2="483.32" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="283.2" y1="352.54" x2="289.12" y2="254.93" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="289.12" y1="354.38" x2="379.54" y2="304.8" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="384.15" y1="304.8" x2="370.32" y2="391.26" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="373.55" y1="395.86" x2="447.85" y2="366.7" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="378.49" y1="396.95" x2="483.15" y2="431.45" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="430.82" y1="489.66" x2="487.13" y2="437" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="424.74" y1="489.66" x2="373.55" y2="400.32" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="227.17" y1="309.52" x2="276.67" y2="349.53" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="289.12" y1="359.24" x2="364.26" y2="391.26" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="283.2" y1="430.44" x2="366.63" y2="398.57" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="348.88" y1="489.66" x2="369" y2="400.32" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="283.2" y1="359.24" x2="276.67" y2="426.79" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="150.91" y1="395.86" x2="276.67" y2="359.24" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="271.47" y1="430.44" x2="156.91" y2="398.57" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="279.94" y1="437" x2="343.06" y2="487.45" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="348.88" y1="495.9" x2="301.35" y2="559.4" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="289.12" y1="534.5" x2="276.67" y2="437.95" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="293.11" y1="534.5" x2="343.06" y2="495.9" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="160.02" y1="471.29" x2="153.04" y2="400.32" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="271.47" y1="435.81" x2="163.51" y2="468.97" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="205.42" y1="499.62" x2="273.43" y2="438.74" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="161.84" y1="473.7" x2="200.44" y2="498.02" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="208.64" y1="499.62" x2="286.63" y2="536.09" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="211.64" y1="563.85" x2="205.42" y2="507.81" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="217.49" y1="563.85" x2="284.55" y2="538.18" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="214.61" y1="566.49" x2="295.68" y2="560.53" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="66.18" y1="495.9" x2="153.04" y2="471.29" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="66.18" y1="577.91" x2="156.53" y2="473.7" fill="none" />
+    <path class="line line--grow" stroke="currentColor" d="M65.03,580.56c.69-.39,135.41-78.94,135.41-78.94" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="65.03" y1="582.39" x2="208.53" y2="566.49" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="176.12" y1="600.79" x2="209.51" y2="568.83" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="65.03" y1="584.81" x2="173.07" y2="599.89" fill="none" />
+    <line class="line line--grow" stroke="currentColor" y1="587.93" x2="58.62" y2="582.39" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="25.48" y1="619.04" x2="58.62" y2="585.16" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="68.23" y1="618.09" x2="61.94" y2="585.16" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="409.43" y1="204.37" x2="345.09" y2="207.12" fill="none" />
+    <line class="line line--grow" stroke="currentColor" x1="300.9" y1="253.71" x2="370.32" y2="297.58" fill="none" />
+</svg>
