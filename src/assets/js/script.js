@@ -284,7 +284,7 @@ window.addEventListener("load", () => {
     gsap.to(path, {
       strokeDashoffset: 0,
       duration: 2.5,
-      delay: 1.5 + index * 0.05,
+      delay: 3 ,
       ease: "power2.out",
     });
   });
