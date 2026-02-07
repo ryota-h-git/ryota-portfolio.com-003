@@ -104,7 +104,7 @@ wp_enqueue_script(
   wp_enqueue_script(
     'theme-script',
     get_template_directory_uri() . '/public/assets/js/script.min.js',
-    array('jquery', 'swiper-js', 'gsap'),
+    array('jquery', 'swiper-js', 'gsap', 'gsap-scrolltrigger'),
     filemtime(get_theme_file_path('public/assets/js/script.min.js')),
     true
   );

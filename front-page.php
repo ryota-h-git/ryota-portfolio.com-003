@@ -1,19 +1,42 @@
 <?php get_header(); ?>
 <div class="l-inner">
-    <header class="l-header">
-    </header>
-    <div class="p-fv">
-        <div class="p-fv__heading-wrap">
-            <h1 class="p-fv__heading animation__text2 is-target">
-                <span>Ryota's</span></br>
-                <span class="p-fv__heading-accent">portfolio</span>
-            </h1>
+    <section class="l-fv">
+        <div class="p-fv">
+            <div class="p-fv__heading-wrap">
+                <h1 class="p-fv__heading">
+                    <span>Ryota's</span></br>
+                    <span class="p-fv__heading-accent">portfolio</span>
+                </h1>
+            </div>
+            <div class="p-fv__whale">
+                <?php get_template_part('template-parts/whale-main-svg'); ?>
+            </div>
+            <div class="p-fv__dots"></div>
         </div>
-        <div class="p-fv__whale">
-            <?php get_template_part('template-parts/whale-main-svg'); ?>
+        <div class="p-lead">
+            <div class="l-inner p-lead__inner">
+                <div class="p-lead__grid">
+                    <div class="p-lead__left">
+                        <p class="p-lead__catch">
+                            <span class="p-lead__catch-text">Where good design<br>meets good code.</span>
+                        </p>
+                    </div>
+                    <div class="p-lead__right js-lead-reveal">
+                        <p class="p-lead__title">良いデザインと良いコードが出会う場所。</p>
+                        <div class="p-lead__body">
+                            <p class="p-lead__text">
+                                美しいデザインを正確に実装しながら、目的に沿った構成や改善提案まで含めたWeb制作を行います。
+                            </p>
+                            <p class="p-lead__text">
+                                小さな修正からサイト全体の制作まで、丁寧で誠実な対応を大切にしています。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="p-fv__dots"></div>
-    </div>
+    </section>
+
     <!-- ------works------ -->
     <section class="c-section p-works" id="works">
         <div class="p-works__inner">

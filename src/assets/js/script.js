@@ -255,38 +255,64 @@ window.addEventListener("load", () => {
     const startX = Math.random() * vw;
     const startY = Math.random() * vh;
     const { x: targetX, y: targetY } = positions[i];
+    const DOT_SIZE = 4; 
 
     gsap.set(dot, {
       x: startX,
       y: startY,
-      width: 4,
-      height: 4,
-      background: "#0077cc",
+      width: DOT_SIZE,
+      height: DOT_SIZE,
+      background: "#98a4ea",
       borderRadius: "50%",
       opacity: 0.4,
       position: "absolute",
     });
 
     gsap.to(dot, {
-      duration: 7,
+      duration: 5,
       delay: Math.random() * 0.8,
       ease: "power2.out",
-      x: targetX,
-      y: targetY,
+      x: targetX - DOT_SIZE / 4,
+      y: targetY - DOT_SIZE / 4,
       opacity: 1,
+      onComplete: function() {
+        const el = this.targets()[0];
+        gsap.to(el, {
+          boxShadow: "0 0 2px 2px #e0deff",
+          scale: 1.05,
+          duration: 3,
+          ease: "sine.inOut",
+        });
+      }
     });
   }
 
-  // 線を描くアニメーション
-  whalePaths.forEach((path, index) => {
+  // 線を描くアニメーション → 描き終わったら「ぼんやり発光」へ
+  whalePaths.forEach((path) => {
     const len = path.getTotalLength();
     gsap.set(path, { strokeDasharray: len, strokeDashoffset: len });
-    gsap.to(path, {
-      strokeDashoffset: 0,
-      duration: 2.5,
-      delay: 3 ,
-      ease: "power2.out",
-    });
+  });
+
+  // 最初は控えめな光（線が描き終わるまで強い発光は出さない）
+  gsap.set(svg, {
+    filter:
+      "drop-shadow(0 0 6px rgba(152,164,234,0.25)) drop-shadow(0 0 10px rgba(255,255,255,0.15))",
+  });
+
+  gsap.to(whalePaths, {
+    strokeDashoffset: 0,
+    duration: 3,
+    delay: 5.5,
+    ease: "power2.out",
+    onComplete: () => {
+      // ぼんやり光る
+      gsap.to(svg, {
+        filter:
+          "drop-shadow(0 0 30px rgba(244, 255, 181, 0.48)) drop-shadow(0 0 42px rgba(255, 255, 255, 0.6))",
+        duration: 1,
+        ease: "sine.inOut",
+      });
+    },
   });
 });
 
@@ -298,18 +324,67 @@ for (let i = 0; i < 30; i++) {
   bubble.classList.add("bubble");
   bg.appendChild(bubble);
 
+  const r = Math.random();
+  const size = 6 + Math.pow(r, 2.2) * 40; 
+
   gsap.set(bubble, {
     x: Math.random() * window.innerWidth,
     y: window.innerHeight + Math.random() * 100,
-    scale: Math.random() * 0.4 + 0.3,
+    width: size,
+    height: size,
+    opacity: 0,
   });
+
+  const BASE_DELAY = 6;
 
   gsap.to(bubble, {
     duration: 10 + Math.random() * 5,
     y: -100,
+    opacity: 1,
     repeat: -1,
-    delay: Math.random() * 5,
+    delay: BASE_DELAY + Math.random() * 5,
     ease: "sine.inOut",
   });
+}
+
+// p-lead__right テキストリビール（スクロール固定→自動で左から白く塗られる）
+if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const leadRight = document.querySelector(".js-lead-reveal");
+  const leadSection = document.querySelector(".p-lead");
+  if (leadRight && leadSection) {
+    let hasTriggered = false;
+
+    ScrollTrigger.create({
+      trigger: leadSection,
+      start: "center 50%",
+      once: true,
+      onEnter: () => {
+        if (hasTriggered) return;
+        hasTriggered = true;
+
+        const scrollY = window.scrollY;
+        document.body.style.overflow = "hidden";
+        document.body.style.position = "fixed";
+        document.body.style.top = `-${scrollY}px`;
+        document.body.style.width = "100%";
+
+        gsap.to(leadRight, {
+          "--reveal": "100%",
+          duration: 2.5,
+          ease: "power2.inOut",
+          onComplete: () => {
+            document.body.style.overflow = "";
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.width = "";
+            window.scrollTo(0, scrollY);
+            ScrollTrigger.refresh();
+          },
+        });
+      },
+    });
+  }
 }
 
