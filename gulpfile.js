@@ -9,6 +9,32 @@ const cleanCss = require("gulp-clean-css");
 const uglify = require("gulp-uglify");
 const rename = require("gulp-rename");
 const htmlBeautify = require("gulp-html-beautify");
+const sharp = require('sharp');
+const path = require('path');
+
+async function convertToWebpSharp() {
+  const gulp = require('gulp');
+  const { readdir, readFile, writeFile } = require('fs').promises;
+  
+  const imgDir = 'public/assets/img';
+  const files = await readdir(imgDir);
+  const imageFiles = files.filter(f => /\.(jpg|jpeg|png)$/i.test(f));
+  
+  for (const file of imageFiles) {
+    const inputPath = path.join(imgDir, file);
+    const outputPath = path.join(imgDir, path.basename(file, path.extname(file)) + '.webp');
+    const buffer = await readFile(inputPath);
+    await sharp(buffer).webp({ quality: 80 }).toFile(outputPath);
+    console.log('Converted:', file, '->', path.basename(outputPath));
+  }
+}
+
+function convertToWebpSharpTask(done) {
+  convertToWebpSharp().then(() => done()).catch(done);
+}
+
+
+
 
 function test(done) {
   console.log("Hello Gulp");
@@ -83,6 +109,7 @@ function formatHTML() {
     .pipe(gulp.dest("./public"));
 }
 
+exports.convertToWebpSharp = convertToWebpSharpTask;
 exports.test = test;
 exports.compileSass = compileSass;
 exports.watch = watch;
